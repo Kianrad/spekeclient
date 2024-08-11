@@ -18,6 +18,7 @@ func RequestKeys(endpoint string, requestPayload models.CPIXRequest, requestHead
 		return nil, err
 	}
 
+	requestBody = []byte(xml.Header + string(requestBody))
 	req, err := http.NewRequest("POST", endpoint, bytes.NewBuffer(requestBody))
 	if err != nil {
 		fmt.Println("Error creating HTTP request:", err)
