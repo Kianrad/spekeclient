@@ -2,7 +2,7 @@ package models
 
 import "encoding/xml"
 
-// CPIX XML Request Structures
+// CPIXRequest represents the CPIX XML request structure
 type CPIXRequest struct {
 	XMLName                 xml.Name                `xml:"cpix:CPIX"`
 	XMLNsCpix               string                  `xml:"xmlns:cpix,attr"`
@@ -70,7 +70,7 @@ type KeyPeriodFilter struct {
 type VideoFilter struct{}
 type AudioFilter struct{}
 
-// CPIX XML Response Structures
+// CPIXResponse represents the CPIX XML response structure
 type CPIXResponse struct {
 	XMLName        xml.Name               `xml:"cpix:CPIX"`
 	ContentKeyList ContentKeyListResponse `xml:"cpix:ContentKeyList"`
@@ -103,7 +103,7 @@ type DRMSystemListResponse struct {
 type DRMSystemResponse struct {
 	SystemID              string             `xml:"systemId,attr"`
 	KID                   string             `xml:"kid,attr"`
-	PSSH                  string             `xml:"cpix:PSSH,omitempty"`
-	ContentProtectionData string             `xml:"cpix:ContentProtectionData,omitempty"`
+	PSSH                  string             `xml:"cpix:PSSH"`
+	ContentProtectionData string             `xml:"cpix:ContentProtectionData"`
 	HLSSignalingData      []HLSSignalingData `xml:"cpix:HLSSignalingData"`
 }

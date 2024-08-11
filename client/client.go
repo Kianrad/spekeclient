@@ -47,8 +47,9 @@ func RequestKeys(endpoint string, requestPayload models.CPIXRequest, requestHead
 		return nil, err
 	}
 
+	decoder := xml.NewDecoder(bytes.NewReader(responseBody))
 	var spekeResponse models.CPIXResponse
-	err = xml.Unmarshal(responseBody, &spekeResponse)
+	err = decoder.Decode(&spekeResponse)
 	if err != nil {
 		fmt.Println("Error unmarshaling response XML:", err)
 		return nil, err
