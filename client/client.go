@@ -2,7 +2,10 @@ package client
 
 import (
 	"bytes"
-	"encoding/xml"
+	xml "encoding/xml"
+
+	nxml "github.com/nbio/xml"
+
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -12,7 +15,7 @@ import (
 
 func RequestKeys(endpoint string, requestPayload models.CPIXRequest, requestHeaders map[string][]string) (*models.CPIXResponse, error) {
 
-	requestBody, err := xml.Marshal(requestPayload)
+	requestBody, err := xml.MarshalIndent(requestPayload, "", "    ")
 	if err != nil {
 		fmt.Println("Error marshaling request payload:", err)
 		return nil, err
@@ -47,7 +50,7 @@ func RequestKeys(endpoint string, requestPayload models.CPIXRequest, requestHead
 		return nil, err
 	}
 
-	decoder := xml.NewDecoder(bytes.NewReader(responseBody))
+	decoder := nxml.NewDecoder(bytes.NewReader(responseBody))
 	var spekeResponse models.CPIXResponse
 	err = decoder.Decode(&spekeResponse)
 	if err != nil {
