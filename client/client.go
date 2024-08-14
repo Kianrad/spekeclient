@@ -10,7 +10,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/Kianrad/spekeclient/models"
+	models "github.com/Kianrad/spekeclient/models"
 )
 
 func RequestKeys(endpoint string, requestPayload models.CPIXRequest, requestHeaders map[string][]string) (*models.CPIXResponse, error) {

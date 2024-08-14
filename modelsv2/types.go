@@ -1,4 +1,4 @@
-package modelsv2
+package models2
 
 import "encoding/xml"
 
