@@ -90,7 +90,7 @@ type CPIXResponse struct {
 }
 
 type ResponseContentKeyList struct {
-	ContentKeys []ContentKey `xml:"cpix:ContentKey"`
+	ContentKeys []ResponseContentKey `xml:"cpix:ContentKey"`
 }
 
 type ResponseContentKey struct {
