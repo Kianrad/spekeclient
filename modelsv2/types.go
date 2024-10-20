@@ -22,7 +22,7 @@ type ContentKeyList struct {
 }
 
 type ContentKey struct {
-	ExplicitIV             string `xml:"explicitIV,attr"`
+	ExplicitIV             string `xml:"explicitIV,attr,omitempty"`
 	KID                    string `xml:"kid,attr"`
 	CommonEncryptionScheme string `xml:"commonEncryptionScheme,attr"`
 }
